@@ -20,6 +20,7 @@ import android.content.Context
 import eu.europa.ec.businesslogic.BuildConfig
 import eu.europa.ec.eudi.rqes.HashAlgorithmOID
 import eu.europa.ec.eudi.rqes.core.RqesSigningLogger
+import eu.europa.ec.eudi.rqesui.domain.entities.localization.LocalizableKey
 import eu.europa.ec.eudi.rqesui.domain.extension.toUriOrEmpty
 import eu.europa.ec.eudi.rqesui.infrastructure.config.DocumentRetrievalConfig
 import eu.europa.ec.eudi.rqesui.infrastructure.config.EudiRQESUiConfig
@@ -31,6 +32,52 @@ class RQESConfigImpl(
     val context: Context,
     override val signingLogger: RqesSigningLogger,
 ) : EudiRQESUiConfig {
+
+    /**
+     * The RQES UI SDK ships English only and falls back to [LocalizableKey.defaultTranslation]
+     * for any language it does not find here, keyed by ISO language code.
+     */
+    override val translations: Map<String, Map<LocalizableKey, String>>
+        get() = mapOf(
+            "en" to LocalizableKey.entries.associateWith { it.defaultTranslation() },
+            "es" to mapOf(
+                LocalizableKey.SignDocument to "Firmar documento",
+                LocalizableKey.CancelSignProcessTitle to "¿Cancelar el proceso de firma?",
+                LocalizableKey.CancelSignProcessSubtitle to "Si cancelas, volverás a la lista de documentos sin firmar tu documento",
+                LocalizableKey.CancelSignProcessSecondaryText to "Cancelar la firma",
+                LocalizableKey.CancelSignProcessPrimaryText to "Continuar con la firma",
+                LocalizableKey.SelectDocumentTitle to "Documento",
+                LocalizableKey.SelectDocumentSubtitle to "Elige un documento de tu dispositivo para firmarlo electrónicamente.",
+                LocalizableKey.SigningService to "Servicio de firma",
+                LocalizableKey.SelectSigningService to "Seleccionar el servicio de firma",
+                LocalizableKey.SelectSigningServiceSubtitle to "El Servicio de Firma Remota permite firmar documentos en línea de forma segura.",
+                LocalizableKey.SelectServiceTitle to "Servicios de firma",
+                LocalizableKey.SelectServiceSubtitle to "Selecciona el Servicio de Firma que se usará para emitir un certificado digital",
+                LocalizableKey.SelectSigningCertificateTitle to "Seleccionar el certificado de firma",
+                LocalizableKey.SelectCertificateSubtitle to "El certificado de firma se usa para verificar tu identidad y está vinculado a tu firma electrónica.",
+                LocalizableKey.SelectSigningCertificateSubtitle to "Selecciona un certificado digital para firmar tu documento",
+                LocalizableKey.SuccessDescription to "Has firmado tu documento correctamente.",
+                LocalizableKey.View to "VER",
+                LocalizableKey.Close to "Cerrar",
+                LocalizableKey.Cancel to "Cancelar",
+                LocalizableKey.Continue to "Continuar",
+                LocalizableKey.Done to "Hecho",
+                LocalizableKey.Share to "Compartir",
+                LocalizableKey.SharingDocument to "¿Compartir el documento?",
+                LocalizableKey.CloseSharingMessage to "Si cierras, volverás al panel sin guardar ni compartir el documento.",
+                LocalizableKey.GenericErrorButtonRetry to "REINTENTAR",
+                LocalizableKey.GenericErrorMessage to "¡Vaya! Algo ha salido mal",
+                LocalizableKey.GenericServiceErrorMessage to "Parece que el Servicio de Firma RQES no está disponible. Inténtalo de nuevo más tarde.",
+                LocalizableKey.GenericErrorDescription to "Si el problema persiste, ponte en contacto con el servicio de asistencia",
+                LocalizableKey.GenericErrorDocumentNotFound to "No se han encontrado datos del documento",
+                LocalizableKey.GenericErrorDocumentMultipleNotSupported to "Actualmente no se admiten varios documentos",
+                LocalizableKey.GenericErrorQtspNotFound to "No se ha encontrado el QTSP seleccionado",
+                LocalizableKey.GenericErrorCertificatesNotFound to "No se han encontrado certificados",
+                LocalizableKey.SigningCertificate to "Certificado de firma",
+                LocalizableKey.SigningCertificates to "Certificados de firma",
+                LocalizableKey.Certificate to "Certificado ${LocalizableKey.ARGUMENTS_SEPARATOR}",
+            ),
+        )
 
     override val qtsps: List<QtspData>
         get() = listOf(
