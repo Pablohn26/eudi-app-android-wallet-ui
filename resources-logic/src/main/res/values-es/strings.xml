@@ -292,7 +292,7 @@
     <string name="dashboard_document_deferred_failed">Error de emisión</string>
     <string name="dashboard_document_revoked">Revocado</string>
     <string name="dashboard_document_suspended">Suspendido</string>
-    <string name="dashboard_document_credentials_info_text" formatted="false">%d/%d</string>
+    <string name="dashboard_document_credentials_info_text">%1$d/%2$d</string>
     <string name="dashboard_bottom_sheet_bluetooth_title">¿Activar el Bluetooth?</string>
     <string name="dashboard_bottom_sheet_bluetooth_subtitle">Activa el Bluetooth para compartir tu información con la opción de autenticación en persona o en línea</string>
     <string name="dashboard_bottom_sheet_bluetooth_primary_button_text">@string/generic_enable_capitalized</string>
@@ -440,7 +440,7 @@
     <string name="document_details_bottom_sheet_delete_secondary_button_text">@string/generic_bottom_sheet_delete_secondary_button_text</string>
     <string name="document_details_toolbar_action_reissue">Reemitir</string>
     <string name="document_details_toolbar_action_remove">Eliminar</string>
-    <string name="document_details_document_credentials_info_text" formatted="false">Instancias restantes %d/%d</string>
+    <string name="document_details_document_credentials_info_text">Instancias restantes %1$d/%2$d</string>
     <string name="document_details_main_section_text">DATOS DEL DOCUMENTO</string>
     <string name="document_details_issuer_section_text">DATOS DEL EMISOR</string>
     <string name="document_details_issuer_card_unknown_issuer">@string/generic_unknown_issuer</string>
